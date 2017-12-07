@@ -28,8 +28,8 @@ def get_page(info):
         if 'part' in text:
             articles.append(x.get_text())
             Nm = "ACJA ACT PART "+ str(count)
-            # save_story = Article(name=Nm, content=x.get_text())
-            # save_story.save()
+            save_story = Article(name=Nm, content=x.get_text())
+            save_story.save()
             count= count + 1
     return articles
     
