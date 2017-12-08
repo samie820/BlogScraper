@@ -16,11 +16,17 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from articles.views import index, ArticleAPIView
-
-
+from articles.views import index, ArticleAPIView, ImportanceAPIView, importance_page
+from tweets.views import AllisonTweetAPIView, DasukiTweetAPIView, OlisaTweetAPIView, YakubuTweetAPIView
 
 urlpatterns = [
+    
+    url(r'^importance/', importance_page, name='importance'),
+    url(r'^api/tweets/allison', AllisonTweetAPIView.as_view(), name='api-tweets'),
+    url(r'^api/tweets/dasuki', DasukiTweetAPIView.as_view(), name='api-tweets-dasuki'),
+    url(r'^api/tweets/olisa', OlisaTweetAPIView.as_view(), name='api-tweets-olisa'),
+    url(r'^api/tweets/yakubu',YakubuTweetAPIView.as_view(), name='api-tweets-yakubu'),
+  #  url(r'^api/importance/', ImportanceAPIView.as_view(), name='api-importance'),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', ArticleAPIView.as_view(), name='api' ),
     url(r'^$', index, name='home'),
